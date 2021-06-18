@@ -3,7 +3,6 @@ class WordsController < ApplicationController
         lang = request.headers["language"]
         words = Word.all
         words.map { |word| word[:title] = word[:title][lang] || word[:title]["en"]}
-        binding.pry
         render json: words
     end
 
