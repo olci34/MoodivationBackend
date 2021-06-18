@@ -7,9 +7,9 @@ end
 end
 
 Author.all.map do |author|
-    title = Faker::GreekPhilosophers.quote
     2.times do
-        word  = author.words.create(title: {en: title, tr: "TR#{title}"})
+        title = Faker::GreekPhilosophers.quote
+        word  = author.words.create(title: {en: title, tr: "TR#{title}"}, size: (12...42).to_a.sample)
         word.categories = Category.all.sample(2)
     end
 end
