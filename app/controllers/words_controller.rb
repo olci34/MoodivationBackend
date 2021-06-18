@@ -1,6 +1,8 @@
 class WordsController < ApplicationController
     def index
+        lang = request.headers["language"]
         words = Word.all
+        words.map { |word| word[:title] = word[:title][lang] }
         render json: words
     end
 
